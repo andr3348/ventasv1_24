@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="n1">
+    <input type="text" name="" id="n2">
+    <button id="btnsumar">Sumar</button>
+    <h3 id="res"></h3>
+</body>
+</html>
+<script>
+    $('#btnsumar').click(() => {
+        n1 = $('#n1').val();
+        n2 = $('#n2').val();
+        param={'n1':n1, 'n2':n2};
+        $.ajax({
+            url:'demoajax1.php',
+            data: param,
+            type: 'get',
+            success: (res) => {
+                $('#res').html(res);
+            }
+        })
+    })
+</script>

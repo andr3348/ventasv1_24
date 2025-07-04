@@ -27,15 +27,7 @@ class LFamilia implements IFamilia {
         $sql = 'SELECT * FROM familia';
         $ps = $cn->prepare($sql);
         $ps->execute();
-        $filas = $ps->fetchAll();
-        $familias = array();
-        foreach ($filas as $f) {
-            $fam = new Familia();
-            $fam->setIdFamilia($f[0]);
-            $fam->setNombre($f[1]);
-            $fam->setDescripcion($f[2]);
-            array_push($familias, $fam);
-        }
+        $familias = $ps->fetchAll(PDO::FETCH_ASSOC);
         return $familias;
     }
     function cargarPorId($idfam) {
